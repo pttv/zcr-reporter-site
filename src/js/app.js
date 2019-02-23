@@ -1,3 +1,7 @@
+import _ from 'lodash';
+
+console.debug(_);
+
 // import { parseCsv } from './parsers';
 
 // /* eslint-disable import/prefer-default-export */
