@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Static HTML Site Boilerplate</title>
+  <title>Ziwei Chart Readings</title>
 </head>
 
 <body>
-    <h1>Hello Static HTML!</h1>
-    <a href="/page.html">Link to my other page</a>
-    <img src="/static/tail.png" alt="code"/>
+  <h1>Ziwei Chart Readings</h1>
+  <input type="file" id="reports-input" name="reports-input" />
+  <button onclick="parseReportsInput()">Process</button>
+  <script type="text/javascript">
+    function parseReportsInput() {
+      try {
+        const file = document.getElementById('reports-inputs').files[0];
+        console.debug('invoke', file);
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+  </script>
 </body>
