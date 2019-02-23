@@ -10,12 +10,14 @@ function getNameFromDir(dir) {
   return dir.slice(lastSlash + 1);
 }
 
-const generateHTMLPlugins = () =>
-  glob.sync('./src/**/*.html').map(dir =>
-    new HTMLWebpackPlugin({
+function generateHTMLPlugins() {
+  return glob.sync('./src/**/*.html').map(
+    dir => new HTMLWebpackPlugin({
       filename: getNameFromDir(dir), // Output
       template: dir, // Input
-    }));
+    }),
+  );
+}
 
 module.exports = {
   node: {

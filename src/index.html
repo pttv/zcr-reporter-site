@@ -10,8 +10,8 @@
 
 <body>
   <h1>Ziwei Chart Readings</h1>
-  <input type="file" id="reports-input" name="reports-input" />
-  <button onclick="parseReportsInput()">Process</button>
+  <input aria-label="reports-input" type="file" id="reports-input" name="reports-input" />
+  <button aria-label="process-button" onclick="parseReportsInput()">Process</button>
   <script type="text/javascript">
     function parseReportsInput() {
       try {
