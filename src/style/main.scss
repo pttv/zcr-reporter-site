@@ -3,10 +3,11 @@ body {
   text-align: center;
 }
 
-.report-content {
-  background: lightpink;
-  width: 800px;
+.report.container {
+  border: 1px dotted lightgray;
   display: flex;
+  padding: 50px;
+  width: 1240px;
 
   table {
     flex: 1;
