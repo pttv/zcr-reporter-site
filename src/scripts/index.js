@@ -6,7 +6,8 @@ function parseReportsInput() {
       try {
         const csvData = String(event.target.result);
         const records = await ZCR.parseCsv(csvData);
-        $('#output').text(JSON.stringify(records[0]));
+        const report = Handlebars.templates.report(records[0]);
+        $('#report-container').html(report);
       } catch (error) {
         alert(error.message);
       }

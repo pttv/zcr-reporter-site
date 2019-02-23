@@ -76,6 +76,11 @@ module.exports = {
         from: './src/scripts/index.js',
         to: './scripts.js',
       },
+      {
+        from: './src/templates/',
+        to: './templates/',
+        ignore: ['*.html'],
+      },
     ]),
     ...generateHTMLPlugins(),
   ],

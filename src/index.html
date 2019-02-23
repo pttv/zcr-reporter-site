@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
     crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.runtime.min.js" integrity="sha256-TXIHNNCHKrYGcTC8qzH3tTXzGaddAm321jR0m/i3ElY="
+    crossorigin="anonymous"></script>
   <script type="text/javascript" src="app.bundle.js"></script>
   <script type="text/javascript" src="scripts.js"></script>
+  <script type="text/javascript" src="static/templates.handlebars"></script>
   <title>Ziwei Chart Readings</title>
 </head>
 
 <body>
   <h1>Ziwei Chart Readings</h1>
   <input aria-label="reports-input" id="reports-input" name="reports-input" onchange="parseReportsInput()" type="file" />
-  <div id="output"></div>
+  <div id="report-container"></div>
 </body>
