@@ -1,5 +1,3 @@
 import { parseCsv } from './parsers';
 
-window.ZCR = {
-  parseCsv,
-};
+window.ZCR = { parseCsv };

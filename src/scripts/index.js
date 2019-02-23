@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 function parseReportsInput() {
   try {
     const inputFile = $('#reports-input')[0].files[0];

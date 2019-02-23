@@ -1,8 +1,8 @@
 const glob = require('glob');
 const path = require('path');
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 function getNameFromDir(dir) {
@@ -12,7 +12,7 @@ function getNameFromDir(dir) {
 
 function generateHTMLPlugins() {
   return glob.sync('./src/**/*.html').map(
-    dir => new HTMLWebpackPlugin({
+    dir => new HtmlPlugin({
       filename: getNameFromDir(dir), // Output
       template: dir, // Input
     }),
@@ -25,8 +25,8 @@ module.exports = {
   },
   entry: ['./src/js/app.js', './src/style/main.scss'],
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'app.bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   optimization: {
     minimize: true,
@@ -67,10 +67,14 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new CopyWebpackPlugin([
+    new CopyPlugin([
       {
         from: './src/static/',
         to: './static/',
+      },
+      {
+        from: './src/scripts/index.js',
+        to: './scripts.js',
       },
     ]),
     ...generateHTMLPlugins(),
