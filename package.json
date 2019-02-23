@@ -50,6 +50,7 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "axios": "^0.18.0",
     "csv": "^5.1.1",
     "lodash": "^4.17.11"
   }

@@ -1,9 +1,18 @@
 body {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Myriad Pro', 'Helvetica Neue', sans-serif;
   text-align: center;
 }
 
-img {
-  display: block;
-  margin: 50px auto;
+.report-content {
+  background: lightpink;
+  width: 800px;
+  display: flex;
+
+  table {
+    flex: 1;
+
+    td {
+      text-align: left;
+    }
+  }
 }
