@@ -1,3 +1,7 @@
+function registerPartials() {
+  Handlebars.registerPartial('userInfo', Handlebars.templates.user_info);
+}
+
 function parseCsvReports() {
   return new Promise((resolve, reject) => {
     const inputFile = $('#reports-input')[0].files[0];
