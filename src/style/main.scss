@@ -15,7 +15,6 @@ body {
   align-items: center;
   background: url('/static/bg.jpg') no-repeat center;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin-bottom: 15px;
   padding: 75px 75px 30px;
@@ -26,6 +25,10 @@ body {
 
   .company-info {
     color: #d7b777;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90px;
     text-align: right;
 
     .title {
@@ -40,6 +43,10 @@ body {
 
     .separator {
       margin: 0 10px;
+    }
+
+    .label {
+      margin-right: 5px;
     }
 
     a {
