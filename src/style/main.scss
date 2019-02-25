@@ -1,6 +1,12 @@
 @font-face {
   font-family: "Myriad Pro";
-  src: url("/static/Myriad-Pro.ttf");
+  src: url("/static/fonts/Myriad-Pro.ttf");
+}
+
+@font-face {
+  font-family: "Myriad Pro";
+  font-weight: bold;
+  src: url("/static/fonts/Myriad-Pro-Bold.ttf");
 }
 
 body {
@@ -18,7 +24,7 @@ body {
 
 .report .brand {
   align-items: center;
-  background: url("/static/bg.jpg") no-repeat center;
+  background: url("/static/images/bg.jpg") no-repeat center;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
