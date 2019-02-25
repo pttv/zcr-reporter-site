@@ -10,10 +10,20 @@ templates['report'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
 templates['user_info'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<table class=\"user-info\">\n  <tbody>\n    <tr>\n      <td class=\"full-name\">Họ và tên</td>\n      <td>\n        "
+  return "<table class=\"user-info\">\n  <tbody>\n    <tr>\n      <td class=\"label\"><strong>Họ và tên:</strong></td>\n      <td class=\"info\">"
     + alias4(((helper = (helper = helpers.fullName || (depth0 != null ? depth0.fullName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fullName","hash":{},"data":data}) : helper)))
-    + "\n      </td>\n    </tr>\n    <tr>\n      <td>Giới tính</td>\n      <td>\n        "
+    + " ("
     + alias4(((helper = (helper = helpers.gender || (depth0 != null ? depth0.gender : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gender","hash":{},"data":data}) : helper)))
-    + "\n      </td>\n    </tr>\n  </tbody>\n</table>";
+    + ")</td>\n    </tr>\n    <tr>\n      <td class=\"label\"><strong>Ngày sinh:</strong></td>\n      <td class=\"info\">"
+    + alias4(((helper = (helper = helpers.birthHour || (depth0 != null ? depth0.birthHour : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"birthHour","hash":{},"data":data}) : helper)))
+    + ", ngày "
+    + alias4(((helper = (helper = helpers.birthDay || (depth0 != null ? depth0.birthDay : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"birthDay","hash":{},"data":data}) : helper)))
+    + "/"
+    + alias4(((helper = (helper = helpers.birthMonth || (depth0 != null ? depth0.birthMonth : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"birthMonth","hash":{},"data":data}) : helper)))
+    + "/"
+    + alias4(((helper = (helper = helpers.birthYear || (depth0 != null ? depth0.birthYear : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"birthYear","hash":{},"data":data}) : helper)))
+    + " (Dương lịch)</td>\n    </tr>\n    <tr>\n      <td class=\"label\"><strong>Email/SĐT:</strong></td>\n      <td class=\"info\">"
+    + alias4(((helper = (helper = helpers.contactDetail || (depth0 != null ? depth0.contactDetail : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"contactDetail","hash":{},"data":data}) : helper)))
+    + "</td>\n    </tr>\n  </tbody>\n</table>";
 },"useData":true});
 })();
