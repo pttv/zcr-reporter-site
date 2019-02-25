@@ -3,6 +3,13 @@
 templates['footer'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"footer wooden\">\n  <div class=\"company-info\">\n    <strong class=\"title\">Phong Thuỷ Tài Vận</strong>\n    <div class=\"address\">\n      <strong class=\"label\">Địa chỉ:</strong>\n      <span>99 Quán Nam, Lê Chân, Hải Phòng</span>\n    </div>\n    <div class=\"address\">\n      <strong class=\"label\">Hotline:</strong>\n      <a href=\"tel:+84886688656\">088.6688.656</a>\n    </div>\n    <div class=\"address\">\n      <strong class=\"label\">Facebook:</strong>\n      <a href=\"https://facebook.com/phongthuytaivan.vn\">phongthuytaivan.vn</a>\n    </div>\n  </div>\n</div>";
 },"useData":true});
+templates['generals'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<div class=\"user-info\">\n  <div class=\"section-title\"><strong>Tổng quan lá số</strong></div>\n  <div>\n    <strong>"
+    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"title","hash":{},"data":data}) : helper)))
+    + "</strong>\n    <div></div>\n    <strong>1. Ý nghĩa</strong>\n    <strong>2. Luận giải</strong>\n  </div>\n</div>";
+},"useData":true});
 templates['report'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
