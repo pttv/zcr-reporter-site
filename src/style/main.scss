@@ -3,17 +3,56 @@ body {
   text-align: center;
 }
 
-.report.container {
+.report .container {
   border: 1px dotted lightgray;
   display: flex;
-  padding: 50px;
-  width: 1240px;
+  flex-direction: column;
+  margin-top: 30px;
+  width: 850px;
+}
 
-  table {
-    flex: 1;
+.report .brand {
+  align-items: center;
+  background: url('/static/bg.jpg') no-repeat center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 75px 75px 30px;
 
-    td {
-      text-align: left;
+  .logo {
+    height: 75px;
+  }
+
+  .company-info {
+    color: #d7b777;
+    text-align: right;
+
+    .title {
+      font-size: 18pt;
     }
+
+    .digital-addresses {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .separator {
+      margin: 0 10px;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}
+
+.report table.user-info {
+  flex: 1;
+  margin: 0 75px;
+
+  td {
+    text-align: left;
   }
 }

@@ -7,12 +7,14 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
+    "build:templates:dev": "handlebars src/templates -f src/static/templates.handlebars --extension html",
     "build:templates": "handlebars src/templates -f src/static/templates.handlebars --min --extension html",
     "lint:js": "./node_modules/.bin/eslint src/js/**/*.js",
     "lint:styles": "stylelint \"src/**/*.scss\"",
     "lint:html": "pa11y-ci ./src/**/*.html",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js",
-    "start": "webpack --config webpack.config.prod.js && http-server ./dist -o"
+    "start": "webpack --config webpack.config.prod.js && http-server ./dist -o",
+    "watch:templates": "watch 'yarn build:templates:dev' src/templates/"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -40,6 +42,7 @@
     "sass-loader": "^7.1.0",
     "stylelint": "^9.5.0",
     "stylelint-config-standard": "^18.2.0",
+    "watch": "^1.0.2",
     "webpack": "^4.0.0",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.8",

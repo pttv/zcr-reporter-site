@@ -1,1 +1,19 @@
-!function(){var n=Handlebars.template,e=Handlebars.templates=Handlebars.templates||{};e.report=n({compiler:[7,">= 4.0.0"],main:function(n,e,a,t,l){var r;return'<div class="report container">\n  <div class="report brand"></div>\n'+(null!=(r=n.invokePartial(t.userInfo,e,{name:"userInfo",data:l,indent:"  ",helpers:a,partials:t,decorators:n.decorators}))?r:"")+"</div>"},usePartial:!0,useData:!0}),e.user_info=n({compiler:[7,">= 4.0.0"],main:function(n,e,a,t,l){var r,d=null!=e?e:n.nullContext||{},s=a.helperMissing,i="function",o=n.escapeExpression;return"<table>\n  <tbody>\n    <tr>\n      <td>Họ và tên</td>\n      <td>\n        "+o(typeof(r=null!=(r=a.fullName||(null!=e?e.fullName:e))?r:s)===i?r.call(d,{name:"fullName",hash:{},data:l}):r)+"\n      </td>\n    </tr>\n    <tr>\n      <td>Giới tính</td>\n      <td>\n        "+o(typeof(r=null!=(r=a.gender||(null!=e?e.gender:e))?r:s)===i?r.call(d,{name:"gender",hash:{},data:l}):r)+"\n      </td>\n    </tr>\n  </tbody>\n</table>"},useData:!0})}();
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['report'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"container\">\n  <div class=\"brand\">\n    <img class=\"logo\" src=\"/static/logo.png\" />\n    <div class=\"company-info\">\n      <strong class=\"title\">Phong Thuỷ Tài Vận</strong>\n      <div class=\"address\">\n        <strong>Địa chỉ: </strong>\n        <span>99 Quán Nam, Lê Chân, Hải Phòng</span>\n      </div>\n      <div class=\"digital-addresses\">\n        <div class=\"address\">\n          <strong>Hotline: </strong>\n          <a href=\"tel:+84886688656\">088.6688.656</a>\n        </div>\n        <span class=\"separator\">|</span>\n        <div class=\"address\">\n          <strong>Facebook: </strong>\n          <a href=\"https://facebook.com/phongthuytaivan.vn\">phongthuytaivan.vn</a>\n        </div>\n      </div>\n    </div>\n  </div>\n"
+    + ((stack1 = container.invokePartial(partials.userInfo,depth0,{"name":"userInfo","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "</div>";
+},"usePartial":true,"useData":true});
+templates['user_info'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<table class=\"user-info\">\n  <tbody>\n    <tr>\n      <td class=\"full-name\">Họ và tên</td>\n      <td>\n        "
+    + alias4(((helper = (helper = helpers.fullName || (depth0 != null ? depth0.fullName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fullName","hash":{},"data":data}) : helper)))
+    + "\n      </td>\n    </tr>\n    <tr>\n      <td>Giới tính</td>\n      <td>\n        "
+    + alias4(((helper = (helper = helpers.gender || (depth0 != null ? depth0.gender : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gender","hash":{},"data":data}) : helper)))
+    + "\n      </td>\n    </tr>\n  </tbody>\n</table>";
+},"useData":true});
+})();
