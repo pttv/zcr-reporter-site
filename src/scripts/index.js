@@ -1,4 +1,5 @@
 function registerPartials() {
+  Handlebars.registerPartial('footer', Handlebars.templates.footer);
   Handlebars.registerPartial('userInfo', Handlebars.templates.user_info);
 }
 

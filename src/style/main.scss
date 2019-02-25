@@ -22,47 +22,30 @@ body {
   width: 850px;
 }
 
-.report .brand {
+.report .wooden {
   align-items: center;
-  background: url("/static/images/bg.jpg") no-repeat center;
+  background: url("/static/images/bg.jpg") no-repeat;
+  color: #d7b777;
   display: flex;
   justify-content: space-between;
+  padding: 45px 75px;
+
+  .title {
+    font-size: 18pt;
+  }
+
+  a {
+    // color: white;
+    color: #d7b777;
+  }
+}
+
+.report .header {
+  background-position: center;
   margin-bottom: 15px;
-  padding: 75px 75px 30px;
 
   .logo {
     height: 75px;
-  }
-
-  .company-info {
-    color: #d7b777;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 90px;
-    text-align: right;
-
-    .title {
-      font-size: 18pt;
-    }
-
-    .digital-addresses {
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-    }
-
-    .separator {
-      margin: 0 10px;
-    }
-
-    .label {
-      margin-right: 5px;
-    }
-
-    a {
-      color: white;
-    }
   }
 }
 
@@ -80,5 +63,33 @@ body {
 
   td.label {
     width: 125px;
+  }
+}
+
+.report .footer {
+  background-position: top;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.report .company-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90px;
+  text-align: right;
+
+  .digital-addresses {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .separator {
+    margin: 0 10px;
+  }
+
+  .label {
+    margin-right: 5px;
   }
 }
