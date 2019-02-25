@@ -37,9 +37,10 @@ async function loadFixtureData() {
   try {
     const response = await fetch('/static/fixture.json');
     const record = await response.json();
-    const report = Handlebars.templates.report(record);
+    const currentYear = 2019;
+    const lasoImage = 'https://tuvivietnam.vn/laso/temp/Nguyen_van_A_2019_8244aac9.jpg';
+    const report = Handlebars.templates.report({ ...record, currentYear, lasoImage });
     $('#report-container').html(report);
   } catch (error) {
-    
   }
 }

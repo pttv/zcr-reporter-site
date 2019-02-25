@@ -35,21 +35,55 @@ body {
   }
 
   a {
-    // color: white;
     color: #d7b777;
   }
 }
 
+.report .company-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100px;
+  text-align: right;
+
+  .digital-addresses {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .separator {
+    margin: 0 10px;
+  }
+
+  .label {
+    margin-right: 5px;
+  }
+}
+
+.report .section-title {
+  background: url("/static/images/bg.jpg") no-repeat center;
+  color: #d7b777;
+  font-size: 13pt;
+  margin: 15px 0;
+  padding-bottom: 3px;
+  padding-top: 5px;
+  text-transform: uppercase;
+}
+
 .report .header {
   background-position: center;
-  margin-bottom: 15px;
 
   .logo {
     height: 75px;
   }
+
+  .title {
+    text-transform: uppercase;
+  }
 }
 
-.report table.user-info {
+.report .user-info table {
   flex: 1;
   margin: 0 75px;
 
@@ -66,30 +100,14 @@ body {
   }
 }
 
+.report .laso {
+  img {
+    width: 75%;
+  }
+}
+
 .report .footer {
   background-position: top;
   justify-content: flex-end;
   margin-top: 15px;
-}
-
-.report .company-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 90px;
-  text-align: right;
-
-  .digital-addresses {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .separator {
-    margin: 0 10px;
-  }
-
-  .label {
-    margin-right: 5px;
-  }
 }
