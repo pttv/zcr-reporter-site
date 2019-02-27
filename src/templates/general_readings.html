@@ -4,6 +4,9 @@
     <div class="text-block">
       <h2>{{title}}</h2>
       <h3>1. Ý nghĩa</h3>
+      {{#each meanings}}
+        <p>{{this}}</p>
+      {{/each}}
       <h3>2. Luận giải</h3>
       {{#each readings}}
         <p>{{this}}</p>
