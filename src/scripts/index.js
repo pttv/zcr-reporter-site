@@ -2,7 +2,7 @@ function registerPartials() {
   Handlebars.registerPartial('clientInfo', Handlebars.templates.client_info);
   Handlebars.registerPartial('footer', Handlebars.templates.footer);
   Handlebars.registerPartial('generalReadings', Handlebars.templates.general_readings);
-  Handlebars.registerPartial('laso', Handlebars.templates.laso);
+  Handlebars.registerPartial('chartImage', Handlebars.templates.chart_image);
   Handlebars.registerPartial('opportunities', Handlebars.templates.opportunities);
   Handlebars.registerPartial('questions', Handlebars.templates.questions);
 }
@@ -33,8 +33,8 @@ async function handleInputFiles() {
     const [record] = records;
 
     const currentYear = new Date().getFullYear();
-    const lasoImage = await ZCR.fetchLasoImage(record);
-    const report = Handlebars.templates.report({ ...record, currentYear, lasoImage });
+    const chartImage = await ZCR.fetchChartImage(record);
+    const report = Handlebars.templates.report({ ...record, currentYear, chartImage });
     $('#report-container').html(report);
     // convertToPdf(record);
   } catch (error) {

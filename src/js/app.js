@@ -1,4 +1,4 @@
-import { fetchLasoImage } from './fetchers';
+import { fetchChartImage } from './fetchers';
 import { parseCsv } from './parsers';
 
-window.ZCR = { fetchLasoImage, parseCsv };
+window.ZCR = { fetchChartImage, parseCsv };

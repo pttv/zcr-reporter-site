@@ -2,11 +2,11 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import qs from 'qs';
 
-import { HOURS_CONVERSION, LASO_URL } from './constants';
+import { CHART_GENERATOR_URL, CORS_ANYWHERE_URL, HOURS_CONVERSION } from './constants';
 
 /* eslint-disable import/prefer-default-export */
 
-export async function fetchLasoImage(record) {
+export async function fetchChartImage(record) {
   const {
     birthDay, birthHour, birthMonth, birthYear, gender, id,
   } = record;
@@ -26,7 +26,7 @@ export async function fetchLasoImage(record) {
   };
 
   const { data: pageHtml } = await axios.post(
-    `https://cors-anywhere.herokuapp.com/${LASO_URL}`,
+    CORS_ANYWHERE_URL + CHART_GENERATOR_URL,
     qs.stringify(body),
     { Origin: 'null' },
   );

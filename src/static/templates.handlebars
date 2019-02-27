@@ -1,5 +1,14 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['chart_image'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div class=\"chart\">\n  <div class=\"section-title\"><strong>Lá số "
+    + alias4(((helper = (helper = helpers.currentYear || (depth0 != null ? depth0.currentYear : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"currentYear","hash":{},"data":data}) : helper)))
+    + "</strong></div>\n  <img src=\""
+    + alias4(((helper = (helper = helpers.chartImage || (depth0 != null ? depth0.chartImage : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"chartImage","hash":{},"data":data}) : helper)))
+    + "\" />\n</div>";
+},"useData":true});
 templates['client_info'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -43,15 +52,6 @@ templates['general_readings'] = template({"1":function(container,depth0,helpers,
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.generalReadings : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div>";
 },"useData":true});
-templates['laso'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "<div class=\"laso\">\n  <div class=\"section-title\"><strong>Lá số "
-    + alias4(((helper = (helper = helpers.currentYear || (depth0 != null ? depth0.currentYear : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"currentYear","hash":{},"data":data}) : helper)))
-    + "</strong></div>\n  <img src=\""
-    + alias4(((helper = (helper = helpers.lasoImage || (depth0 != null ? depth0.lasoImage : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"lasoImage","hash":{},"data":data}) : helper)))
-    + "\" />\n</div>";
-},"useData":true});
 templates['opportunities'] = template({"1":function(container,depth0,helpers,partials,data) {
     return "      <p>"
     + container.escapeExpression(container.lambda(depth0, depth0))
@@ -91,6 +91,7 @@ templates['report'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
 
   return "<div class=\"container\">\n  <div class=\"header wooden\">\n    <img class=\"logo\" src=\"/static/images/logo.png\" />\n    <strong class=\"title\">Luận giải lá số Tử vi</strong>\n  </div>\n"
     + ((stack1 = container.invokePartial(partials.clientInfo,depth0,{"name":"clientInfo","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + ((stack1 = container.invokePartial(partials.chartImage,depth0,{"name":"chartImage","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + ((stack1 = container.invokePartial(partials.generalReadings,depth0,{"name":"generalReadings","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + ((stack1 = container.invokePartial(partials.opportunities,depth0,{"name":"opportunities","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + ((stack1 = container.invokePartial(partials.questions,depth0,{"name":"questions","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")

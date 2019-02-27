@@ -1,3 +1,6 @@
+export const CHART_GENERATOR_URL = 'https://tuvivietnam.vn/index.php?anlaso/laso';
+export const CORS_ANYWHERE_URL = 'https://cors-anywhere.herokuapp.com/';
+
 export const HOURS_CONVERSION = {
   Tý: '00',
   Sửu: '02',
@@ -12,5 +15,3 @@ export const HOURS_CONVERSION = {
   Tuất: '20',
   Hợi: '22',
 };
-
-export const LASO_URL = 'https://tuvivietnam.vn/index.php?anlaso/laso';
