@@ -1,9 +1,13 @@
-<div class="user-info">
+<div class="content">
   <div class="section-title"><strong>Tổng quan lá số</strong></div>
-  <div>
-    <strong>{{title}}</strong>
-    <div></div>
-    <strong>1. Ý nghĩa</strong>
-    <strong>2. Luận giải</strong>
-  </div>
+  {{#each generalReadings}}
+    <div class="text-block">
+      <h2>{{title}}</h2>
+      <h3>1. Ý nghĩa</h3>
+      <h3>2. Luận giải</h3>
+      {{#each readings}}
+        <p>{{this}}</p>
+      {{/each}}
+    </div>
+  {{/each}}
 </div>

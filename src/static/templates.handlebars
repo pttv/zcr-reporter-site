@@ -3,12 +3,24 @@
 templates['footer'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"footer wooden\">\n  <div class=\"company-info\">\n    <strong class=\"title\">Phong Thuỷ Tài Vận</strong>\n    <div class=\"address\">\n      <strong class=\"label\">Địa chỉ:</strong>\n      <span>99 Quán Nam, Lê Chân, Hải Phòng</span>\n    </div>\n    <div class=\"address\">\n      <strong class=\"label\">Hotline:</strong>\n      <a href=\"tel:+84886688656\">088.6688.656</a>\n    </div>\n    <div class=\"address\">\n      <strong class=\"label\">Facebook:</strong>\n      <a href=\"https://facebook.com/phongthuytaivan.vn\">phongthuytaivan.vn</a>\n    </div>\n  </div>\n</div>";
 },"useData":true});
-templates['generals'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
+templates['generals'] = template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {});
 
-  return "<div class=\"user-info\">\n  <div class=\"section-title\"><strong>Tổng quan lá số</strong></div>\n  <div>\n    <strong>"
-    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"title","hash":{},"data":data}) : helper)))
-    + "</strong>\n    <div></div>\n    <strong>1. Ý nghĩa</strong>\n    <strong>2. Luận giải</strong>\n  </div>\n</div>";
+  return "    <div class=\"text-block\">\n      <h2>"
+    + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "</h2>\n      <h3>1. Ý nghĩa</h3>\n      <h3>2. Luận giải</h3>\n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.readings : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "    </div>\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    return "        <p>"
+    + container.escapeExpression(container.lambda(depth0, depth0))
+    + "</p>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"content\">\n  <div class=\"section-title\"><strong>Tổng quan lá số</strong></div>\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.generalReadings : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div>";
 },"useData":true});
 templates['report'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
@@ -20,6 +32,7 @@ templates['report'] = template({"compiler":[7,">= 4.0.0"],"main":function(contai
     + "</strong></div>\n    <img src=\""
     + alias4(((helper = (helper = helpers.lasoImage || (depth0 != null ? depth0.lasoImage : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"lasoImage","hash":{},"data":data}) : helper)))
     + "\" />\n  </div>\n"
+    + ((stack1 = container.invokePartial(partials.generals,depth0,{"name":"generals","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + ((stack1 = container.invokePartial(partials.footer,depth0,{"name":"footer","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + "</div>";
 },"usePartial":true,"useData":true});

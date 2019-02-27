@@ -2,6 +2,22 @@ import _ from 'lodash';
 import $ from 'lodash/fp';
 import csv from 'csv';
 
+const meaningsMetadata = require('./meanings.json');
+
+const parseTextBlock = $.flow(
+  $.split(/\n+/gi),
+  $.map(_.trim),
+  $.map(line => _.replace(line, /^-\s+/, '')),
+  $.flatten,
+);
+
+function parseGeneralReadings(rawReadings, key) {
+  const { meanings, title } = meaningsMetadata[key];
+  const readings = parseTextBlock(rawReadings);
+
+  return { meanings, readings, title };
+}
+
 function parseQuestions(questions) {
   const compacted = _.compact(questions);
   const coupled = _.slice(compacted, 0, compacted.length - (compacted.length % 2));
@@ -28,19 +44,22 @@ function parseRecordRows(records) {
       birthDay,
       birthMonth,
       birthYear,
-      explanation,
+      generalReadings1,
+      generalReadings2,
+      generalReadings3,
+      generalReadings4,
+      rawOpportunities,
       ...rawQuestions
     ] = rec;
 
-    const explanationLines = _.split(explanation, /\n+/gi);
-    const newLines = new Array(explanationLines.length).fill('');
+    const generalReadings = [
+      parseGeneralReadings(generalReadings1, 'menh_tai_quan'),
+      parseGeneralReadings(generalReadings2, 'phuc_di_the'),
+      parseGeneralReadings(generalReadings3, 'phu_tu_no'),
+      parseGeneralReadings(generalReadings4, 'dien_tat_huynh'),
+    ];
 
-    const mainParagraphs = $.flow(
-      $.map(_.trim),
-      $.map(line => _.replace(line, /^-\s+/, '')),
-      $.zip(newLines),
-      $.flatten,
-    )(explanationLines);
+    const opportunities = parseTextBlock(rawOpportunities);
 
     const questions = parseQuestions(rawQuestions);
 
@@ -52,8 +71,9 @@ function parseRecordRows(records) {
       contactDetail,
       fullName,
       gender,
+      generalReadings,
       id,
-      mainParagraphs,
+      opportunities,
       questions,
     };
   });

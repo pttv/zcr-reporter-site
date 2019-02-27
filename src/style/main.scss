@@ -106,6 +106,13 @@ body {
   }
 }
 
+.report .content {
+  .text-block {
+    text-align: justify;
+    margin: 0 10px;
+  }
+}
+
 .report .footer {
   background-position: top;
   justify-content: flex-end;
