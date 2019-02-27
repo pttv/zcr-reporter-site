@@ -39,6 +39,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
+            plugins: ['@babel/transform-runtime'],
             presets: ['@babel/env'],
           },
         },
