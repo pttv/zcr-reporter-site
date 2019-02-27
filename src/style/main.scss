@@ -12,9 +12,10 @@
 body {
   font-family: "Myriad Pro", "Helvetica Neue", sans-serif;
   text-align: center;
+  width: 850px;
 }
 
-.report .container {
+.container {
   border: 1px dotted lightgray;
   display: flex;
   flex-direction: column;
@@ -22,7 +23,7 @@ body {
   width: 850px;
 }
 
-.report .wooden {
+.wooden {
   align-items: center;
   background: url("/static/images/bg.jpg") no-repeat;
   color: #d7b777;
@@ -39,7 +40,12 @@ body {
   }
 }
 
-.report .company-info {
+.eof {
+  font-family: Arial; // stylelint-disable-line
+  font-size: 18pt;
+}
+
+.company-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,7 +67,28 @@ body {
   }
 }
 
-.report .section-title {
+.client-info table {
+  padding: 0 75px;
+  width: 100%;
+
+  tr {
+    line-height: 30px;
+  }
+
+  td {
+    text-align: left;
+  }
+
+  td.label {
+    width: 125px;
+  }
+}
+
+.laso img {
+  margin: 0 75px;
+}
+
+.section-title {
   background: url("/static/images/bg.jpg") no-repeat center;
   color: #d7b777;
   font-size: 13pt;
@@ -83,33 +110,10 @@ body {
   }
 }
 
-.report .user-info table {
-  flex: 1;
-  margin: 0 75px;
-
-  tr {
-    line-height: 30px;
-  }
-
-  td {
-    text-align: left;
-  }
-
-  td.label {
-    width: 125px;
-  }
-}
-
-.report .laso {
-  img {
-    width: 75%;
-  }
-}
-
 .report .content {
   .text-block {
+    margin: 0 75px;
     text-align: justify;
-    margin: 0 10px;
   }
 }
 

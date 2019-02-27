@@ -1,0 +1,36 @@
+import axios from 'axios';
+import cheerio from 'cheerio';
+import qs from 'qs';
+
+import { HOURS_CONVERSION, LASO_URL } from './constants';
+
+/* eslint-disable import/prefer-default-export */
+
+export async function fetchLasoImage(record) {
+  const {
+    birthDay, birthHour, birthMonth, birthYear, gender, id,
+  } = record;
+
+  const body = {
+    anh_mau: '1',
+    gio_duong: HOURS_CONVERSION[birthHour],
+    gioi_tinh: gender === 'Nam' ? '1' : '0',
+    ho_ten: id,
+    loai_lich: '1',
+    luutru: '1',
+    nam_duong: birthYear,
+    nam_xem: '2019',
+    ngay_duong: birthDay,
+    phut_duong: '00',
+    thang_duong: birthMonth,
+  };
+
+  const { data: pageHtml } = await axios.post(
+    `https://cors-anywhere.herokuapp.com/${LASO_URL}`,
+    qs.stringify(body),
+    { Origin: 'null' },
+  );
+  const selector = cheerio.load(pageHtml);
+  const imageLink = selector('div.content_wrap_laso > img')[0].attribs.src;
+  return imageLink;
+}

@@ -1,7 +1,9 @@
 function registerPartials() {
+  Handlebars.registerPartial('clientInfo', Handlebars.templates.client_info);
   Handlebars.registerPartial('footer', Handlebars.templates.footer);
-  Handlebars.registerPartial('generals', Handlebars.templates.generals);
-  Handlebars.registerPartial('userInfo', Handlebars.templates.user_info);
+  Handlebars.registerPartial('generalReadings', Handlebars.templates.general_readings);
+  Handlebars.registerPartial('opportunities', Handlebars.templates.opportunities);
+  Handlebars.registerPartial('questions', Handlebars.templates.questions);
 }
 
 function parseCsvReports() {
@@ -13,7 +15,6 @@ function parseCsvReports() {
       try {
         const csvData = String(event.target.result);
         const records = await ZCR.parseCsv(csvData);
-        console.debug(JSON.stringify(records[0]));
         resolve(records);
       } catch (error) {
         alert(error.message);
@@ -26,22 +27,19 @@ function parseCsvReports() {
 
 async function handleInputFiles() {
   try {
+    $('#report-container').text('Loading...');
     const records = await parseCsvReports();
-    const report = Handlebars.templates.report(records[0]);
-    $('#report-container').html(report);
-  } catch (error) {
-    alert(JSON.stringify(error));
-  }
-}
-
-async function loadFixtureData() {
-  try {
-    const response = await fetch('/static/fixture.json');
-    const record = await response.json();
-    const currentYear = 2019;
-    const lasoImage = 'https://tuvivietnam.vn/laso/temp/Nguyen_van_A_2019_8244aac9.jpg';
+    const [record] = records;
+    const currentYear = new Date().getFullYear();
+    const lasoImage = await ZCR.fetchLasoImage(record);
     const report = Handlebars.templates.report({ ...record, currentYear, lasoImage });
     $('#report-container').html(report);
   } catch (error) {
+    console.error(error);
+    alert(error.message);
   }
 }
+
+$(document).ready(() => {
+  registerPartials();
+});

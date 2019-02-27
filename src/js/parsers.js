@@ -4,18 +4,21 @@ import csv from 'csv';
 
 const meaningsMetadata = require('./meanings.json');
 
+const generalSectionOrders = ['I', 'II', 'III', 'IV'];
+
 const parseTextBlock = $.flow(
   $.split(/\n+/gi),
   $.map(_.trim),
-  $.map(line => _.replace(line, /^-\s+/, '')),
+  $.map(line => _.replace(line, /^-\s*/, '')),
+  $.compact,
   $.flatten,
 );
 
-function parseGeneralReadings(rawReadings, key) {
+function parseGeneralReadings(rawReadings, index, key) {
   const { meanings, title } = meaningsMetadata[key];
+  const order = generalSectionOrders[index];
   const readings = parseTextBlock(rawReadings);
-
-  return { meanings, readings, title };
+  return { meanings, readings, title: `${order}. ${title}` };
 }
 
 function parseQuestions(questions) {
@@ -28,7 +31,7 @@ function parseQuestions(questions) {
   const pairs = _.unzip([titles, answers]);
 
   return _.map(pairs, ([title, answer], index) => ({
-    answer: _.trim(answer),
+    answer: parseTextBlock(answer),
     title: `${index + 1}. ${_.trim(title)}`,
   }));
 }
@@ -44,19 +47,19 @@ function parseRecordRows(records) {
       birthDay,
       birthMonth,
       birthYear,
-      generalReadings1,
-      generalReadings2,
-      generalReadings3,
-      generalReadings4,
+      menhTaiQuan,
+      phucDiThe,
+      phuTuNo,
+      dienTatHuynh,
       rawOpportunities,
       ...rawQuestions
     ] = rec;
 
     const generalReadings = [
-      parseGeneralReadings(generalReadings1, 'menh_tai_quan'),
-      parseGeneralReadings(generalReadings2, 'phuc_di_the'),
-      parseGeneralReadings(generalReadings3, 'phu_tu_no'),
-      parseGeneralReadings(generalReadings4, 'dien_tat_huynh'),
+      parseGeneralReadings(menhTaiQuan, 0, 'menh_tai_quan'),
+      parseGeneralReadings(phucDiThe, 1, 'phuc_di_the'),
+      parseGeneralReadings(phuTuNo, 2, 'phu_tu_no'),
+      parseGeneralReadings(dienTatHuynh, 3, 'dien_tat_huynh'),
     ];
 
     const opportunities = parseTextBlock(rawOpportunities);
