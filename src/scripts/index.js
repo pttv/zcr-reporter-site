@@ -27,7 +27,7 @@ function parseCsvReports() {
 
 async function handleInputFiles() {
   try {
-    $('#report-container').text('Loading...');
+    $('.loading-ring').removeClass('hidden');
     const records = await parseCsvReports();
     const [record] = records;
     const currentYear = new Date().getFullYear();

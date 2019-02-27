@@ -15,11 +15,14 @@ body {
   width: 850px;
 }
 
+.report {
+  margin-top: 30px;
+}
+
 .container {
   border: 1px dotted lightgray;
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
   width: 850px;
 }
 
@@ -121,4 +124,50 @@ body {
   background-position: top;
   justify-content: flex-end;
   margin-top: 15px;
+}
+
+.loading-ring {
+  display: inline-block;
+  height: 64px;
+  position: relative;
+  width: 64px;
+
+  div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border: 6px solid black;
+    border-radius: 50%;
+    animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: black transparent transparent transparent;
+  }
+
+  div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+
+  div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+
+  div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+}
+
+.loading-ring.hidden {
+  display: none;
+}
+
+@keyframes loading-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
