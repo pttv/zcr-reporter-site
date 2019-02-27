@@ -2,6 +2,7 @@ function registerPartials() {
   Handlebars.registerPartial('clientInfo', Handlebars.templates.client_info);
   Handlebars.registerPartial('footer', Handlebars.templates.footer);
   Handlebars.registerPartial('generalReadings', Handlebars.templates.general_readings);
+  Handlebars.registerPartial('laso', Handlebars.templates.laso);
   Handlebars.registerPartial('opportunities', Handlebars.templates.opportunities);
   Handlebars.registerPartial('questions', Handlebars.templates.questions);
 }
@@ -20,9 +21,9 @@ function parseCsvReports() {
         alert(error.message);
       }
     };
-    
+
     fileReader.readAsText(inputFile);
-  })
+  });
 }
 
 async function handleInputFiles() {
@@ -30,14 +31,24 @@ async function handleInputFiles() {
     $('.loading-ring').removeClass('hidden');
     const records = await parseCsvReports();
     const [record] = records;
+
     const currentYear = new Date().getFullYear();
     const lasoImage = await ZCR.fetchLasoImage(record);
     const report = Handlebars.templates.report({ ...record, currentYear, lasoImage });
     $('#report-container').html(report);
+    // convertToPdf(record);
   } catch (error) {
     console.error(error);
     alert(error.message);
   }
+}
+
+function convertToPdf(record) {
+  const { id } = record;
+  const generator = new jsPDF();
+  const source = $('#report-container')[0];
+  generator.fromHTML(source, 0, 0, { width: 850 });
+  generator.save(`${id}.pdf`);
 }
 
 $(document).ready(() => {
