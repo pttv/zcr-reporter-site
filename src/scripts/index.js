@@ -1,8 +1,9 @@
 function registerPartials() {
+  Handlebars.registerPartial('chartImage', Handlebars.templates.chart_image);
   Handlebars.registerPartial('clientInfo', Handlebars.templates.client_info);
   Handlebars.registerPartial('footer', Handlebars.templates.footer);
   Handlebars.registerPartial('generalReadings', Handlebars.templates.general_readings);
-  Handlebars.registerPartial('chartImage', Handlebars.templates.chart_image);
+  Handlebars.registerPartial('header', Handlebars.templates.header);
   Handlebars.registerPartial('opportunities', Handlebars.templates.opportunities);
   Handlebars.registerPartial('questions', Handlebars.templates.questions);
 }

@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Myriad Pro";
-  src: url("/static/fonts/Myriad-Pro.ttf");
+  src: url("../static/fonts/Myriad-Pro.ttf");
 }
 
 @font-face {
   font-family: "Myriad Pro";
   font-weight: bold;
-  src: url("/static/fonts/Myriad-Pro-Bold.ttf");
+  src: url("../static/fonts/Myriad-Pro-Bold.ttf");
 }
 
 $bigPadding: 30mm;
@@ -29,7 +29,6 @@ body {
   border: 1px dotted lightgray;
   display: flex;
   flex-direction: column;
-  // height: 29.7cm;
   width: 21cm;
 }
 
@@ -98,7 +97,7 @@ body {
 }
 
 .section-title {
-  background: url("/static/images/bg-section.jpg") no-repeat center;
+  background: url("../static/images/bg-section.jpg") no-repeat center;
   color: #d7b777;
   font-size: 13pt;
   margin: $tinyPadding 0;
@@ -108,10 +107,13 @@ body {
 }
 
 .report .header {
-  background: url("/static/images/bg-header.jpg") no-repeat center;
+  background: url("../static/images/bg-header.jpg") no-repeat center;
 
   .logo {
+    background: url('../static/images/logo.png') no-repeat center;
+    background-size: cover;
     height: $normalPadding;
+    width: $normalPadding;
   }
 
   .title {
@@ -127,7 +129,7 @@ body {
 }
 
 .report .footer {
-  background: url("/static/images/bg-footer.jpg") no-repeat center;
+  background: url("../static/images/bg-footer.jpg") no-repeat center;
   justify-content: flex-end;
   margin-top: $tinyPadding;
 }

@@ -59,6 +59,18 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
       },
+      {
+        test: /\.(png|jpg|gif|ttf)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              fallback: 'file-loader',
+              limit: 65536,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
