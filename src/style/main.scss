@@ -35,7 +35,6 @@ body {
 
 .wooden {
   align-items: center;
-  background: url("/static/images/bg.jpg") no-repeat;
   color: #d7b777;
   display: flex;
   justify-content: space-between;
@@ -99,7 +98,7 @@ body {
 }
 
 .section-title {
-  background: url("/static/images/bg.jpg") no-repeat center;
+  background: url("/static/images/bg-section.jpg") no-repeat center;
   color: #d7b777;
   font-size: 13pt;
   margin: $tinyPadding 0;
@@ -109,7 +108,7 @@ body {
 }
 
 .report .header {
-  background-position: -200px -450px;
+  background: url("/static/images/bg-header.jpg") no-repeat center;
 
   .logo {
     height: $normalPadding;
@@ -128,7 +127,7 @@ body {
 }
 
 .report .footer {
-  background-position: top;
+  background: url("/static/images/bg-footer.jpg") no-repeat center;
   justify-content: flex-end;
   margin-top: $tinyPadding;
 }
