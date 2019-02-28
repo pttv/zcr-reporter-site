@@ -9,8 +9,6 @@
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.runtime.min.js" integrity="sha256-TXIHNNCHKrYGcTC8qzH3tTXzGaddAm321jR0m/i3ElY="
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js" integrity="sha256-gJWdmuCRBovJMD9D/TVdo4TIK8u5Sti11764sZT1DhI="
-    crossorigin="anonymous"></script>
   <script type="text/javascript" src="app.bundle.js"></script>
   <script type="text/javascript" src="scripts.js"></script>
   <script type="text/javascript" src="static/templates.handlebars"></script>
@@ -18,14 +16,17 @@
 </head>
 
 <body>
-  <h1>Ziwei Chart Readings</h1>
-  <input aria-label="reports-input" id="reports-input" name="reports-input" onchange="handleInputFiles()" type="file" />
-  <div class="report" id="report-container">
-    <div class="loading-ring hidden">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <div class="no-print">
+    <h1>Luận giải lá số Tử Vi</h1>
+    <div class="file-input">
+      <input id="reports-input" onchange="handleInputFiles()" type="file" />
+      <div class="loading-ring hidden">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
+  <div id="report-wrapper"></div>
 </body>

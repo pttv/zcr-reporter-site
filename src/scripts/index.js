@@ -30,26 +30,22 @@ function parseCsvReports() {
 async function handleInputFiles() {
   try {
     $('.loading-ring').removeClass('hidden');
+    $('#report-container').empty();
+
     const records = await parseCsvReports();
     const [record] = records;
-
     const currentYear = new Date().getFullYear();
     const chartImage = await ZCR.fetchChartImage(record);
     const report = Handlebars.templates.report({ ...record, currentYear, chartImage });
-    $('#report-container').html(report);
-    // convertToPdf(record);
-  } catch (error) {
-    console.error(error);
-    alert(error.message);
-  }
-}
 
-function convertToPdf(record) {
-  const { id } = record;
-  const generator = new jsPDF();
-  const source = $('#report-container')[0];
-  generator.fromHTML(source, 0, 0, { width: 850 });
-  generator.save(`${id}.pdf`);
+    $('.loading-ring').addClass('hidden');
+    $('body').html(report);
+    // $('#report-wrapper').html(report);
+  } catch (error) {
+    console.debug(error);
+    alert(error.message);
+    $('.loading-ring').addClass('hidden');
+  }
 }
 
 $(document).ready(() => {

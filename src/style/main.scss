@@ -10,23 +10,29 @@
 }
 
 $bigPadding: 30mm;
+$fontSize: 18pt;
 $normalPadding: 20mm;
 $smallPadding: 15mm;
 $tinyPadding: 5mm;
-$fontSize: 18pt;
 
 body {
   font-family: "Myriad Pro", "Helvetica Neue", sans-serif;
+  margin: auto;
   text-align: center;
   width: 21cm;
 }
 
-.report {
-  margin-top: 30px;
+.file-input {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
-.container {
-  border: 1px dotted lightgray;
+#report-wrapper {
+  padding-top: 5px;
+}
+
+.report {
   display: flex;
   flex-direction: column;
   width: 21cm;
@@ -49,7 +55,7 @@ body {
 }
 
 .eof {
-  font-family: Arial; // stylelint-disable-line
+  font-family: serif;
   font-size: $fontSize;
 }
 
@@ -93,11 +99,11 @@ body {
 }
 
 .chart img {
-  width: 13cm;
+  width: 17cm;
 }
 
 .section-title {
-  background: url("../static/images/bg-section.jpg") no-repeat center;
+  background: url("../static/images/bg-section.jpg") no-repeat;
   color: #d7b777;
   font-size: 13pt;
   margin: $tinyPadding 0;
@@ -107,7 +113,7 @@ body {
 }
 
 .report .header {
-  background: url("../static/images/bg-header.jpg") no-repeat center;
+  background: url("../static/images/bg-header.jpg") no-repeat;
 
   .logo {
     background: url('../static/images/logo.png') no-repeat center;
@@ -129,25 +135,25 @@ body {
 }
 
 .report .footer {
-  background: url("../static/images/bg-footer.jpg") no-repeat center;
+  background: url("../static/images/bg-footer.jpg") no-repeat;
+  background-size: cover;
   justify-content: flex-end;
   margin-top: $tinyPadding;
 }
 
 .loading-ring {
-  display: inline-block;
-  height: 64px;
+  height: 32px;
   position: relative;
-  width: 64px;
+  width: 32px;
 
   div {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 51px;
-    height: 51px;
-    margin: 6px;
-    border: 6px solid black;
+    width: 26px;
+    height: 26px;
+    margin: 3px;
+    border: 3px solid black;
     border-radius: 50%;
     animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: black transparent transparent transparent;
