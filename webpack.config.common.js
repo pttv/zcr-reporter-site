@@ -11,7 +11,7 @@ function getNameFromDir(dir) {
 }
 
 function generateHTMLPlugins() {
-  return glob.sync('./src/**/*.html').map(
+  return glob.sync('./src/*.html').map(
     dir => new HtmlPlugin({
       filename: getNameFromDir(dir), // Output
       template: dir, // Input
@@ -66,7 +66,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               fallback: 'file-loader',
-              limit: 65536,
+              limit: 2 ** 17,
             },
           },
         ],
@@ -84,15 +84,11 @@ module.exports = {
       {
         from: './src/static/',
         to: './static/',
+        ignore: ['*.png', '*.jpg', '*.ttf'],
       },
       {
         from: './src/scripts/index.js',
         to: './scripts.js',
-      },
-      {
-        from: './src/templates/',
-        to: './templates/',
-        ignore: ['*.html'],
       },
     ]),
     ...generateHTMLPlugins(),

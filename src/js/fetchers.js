@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import qs from 'qs';
@@ -32,5 +33,5 @@ export async function fetchChartImage(record) {
   );
   const selector = cheerio.load(pageHtml);
   const imageLink = selector('div.content_wrap_laso > img')[0].attribs.src;
-  return imageLink;
+  return _.trim(imageLink);
 }
