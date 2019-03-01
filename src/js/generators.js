@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars/runtime';
 import { fetchChartImage } from './fetchers';
 
-import './configs/report';
+import './configs/report.handlebars';
 
 export function registerPartials() {
   Handlebars.registerPartial('chartImage', Handlebars.templates.chart_image);
