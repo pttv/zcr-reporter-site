@@ -9,17 +9,17 @@
   src: url("../static/fonts/Myriad-Pro-Bold.ttf");
 }
 
-$bigPadding: 30mm;
+$bigPadding: 125px;
 $fontSize: 18pt;
-$normalPadding: 20mm;
-$smallPadding: 15mm;
-$tinyPadding: 5mm;
+$normalPadding: 75px;
+$smallPadding: 30px;
+$tinyPadding: 15px;
 
 body {
   font-family: "Myriad Pro", "Helvetica Neue", sans-serif;
   margin: auto;
+  max-width: 800px;
   text-align: center;
-  width: 21cm;
 }
 
 .file-input {
@@ -43,7 +43,7 @@ body {
   color: #d7b777;
   display: flex;
   justify-content: space-between;
-  padding: $smallPadding $normalPadding;
+  padding: 2 * $smallPadding $normalPadding;
 
   .title {
     font-size: $fontSize;
@@ -99,7 +99,8 @@ body {
 }
 
 .chart img {
-  width: 17cm;
+  min-width: 200px;
+  width: 75%;
 }
 
 .section-title {

@@ -27,27 +27,55 @@ function parseCsvReports() {
   });
 }
 
+function toggleLoading(loading) {
+  if (!loading) {
+    $('.loading-ring').addClass('hidden');
+    return;
+  }
+
+  $('.loading-ring').removeClass('hidden');
+  $('#report-container').empty();
+}
+
+async function renderChartReading(record) {
+  const currentYear = new Date().getFullYear();
+  const chartImage = await ZCR.fetchChartImage(record);
+  return Handlebars.templates.report({ ...record, currentYear, chartImage });
+}
+
 async function handleInputFiles() {
   try {
-    $('.loading-ring').removeClass('hidden');
-    $('#report-container').empty();
+    toggleLoading(true);
 
     const records = await parseCsvReports();
-    const [record] = records;
-    const currentYear = new Date().getFullYear();
-    const chartImage = await ZCR.fetchChartImage(record);
-    const report = Handlebars.templates.report({ ...record, currentYear, chartImage });
+    const report = await renderChartReading(records[0]);
 
-    $('.loading-ring').addClass('hidden');
-    // $('body').html(report);
+    toggleLoading(false);
     $('#report-wrapper').html(report);
   } catch (error) {
+    toggleLoading(false);
     console.debug(error);
     alert(error.message);
-    $('.loading-ring').addClass('hidden');
+  }
+}
+
+async function loadFixtures() {
+  try {
+    toggleLoading(true);
+    const response = await fetch('/static/fixtures.json');
+    const record = await response.json();
+    const report = await renderChartReading(record);
+    
+    toggleLoading(false);
+    $('#report-wrapper').html(report);
+  } catch (error) {
+    toggleLoading(false);
+    console.debug(error);
+    alert(error.message);
   }
 }
 
 $(document).ready(() => {
   registerPartials();
+  // loadFixtures();
 });
