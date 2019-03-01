@@ -87,11 +87,6 @@ module.exports = {
     }),
     new CopyPlugin([
       {
-        from: './src/static/',
-        to: './static/',
-        ignore: ['*.png', '*.jpg', '*.ttf', '*fixtures*'],
-      },
-      {
         from: './src/scripts/index.js',
         to: './scripts.js',
       },
