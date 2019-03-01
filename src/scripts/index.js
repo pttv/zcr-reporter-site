@@ -45,7 +45,8 @@ async function handleInputFiles() {
 
     toggleLoading(false);
     downloadReport(report, record.id);
-    $('#report-wrapper').html(report);
+    $('body').html(report);
+    // $('#report-wrapper').html(report);
   } catch (error) {
     toggleLoading(false);
     console.debug(error);
