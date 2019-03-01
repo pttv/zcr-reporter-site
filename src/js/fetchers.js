@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import qs from 'qs';
@@ -18,7 +17,7 @@ export async function fetchChartImage(record) {
     gioi_tinh: gender === 'Nam' ? '1' : '0',
     ho_ten: id,
     loai_lich: '1',
-    luutru: '1',
+    luutru: '0',
     nam_duong: birthYear,
     nam_xem: '2019',
     ngay_duong: birthDay,
@@ -33,5 +32,6 @@ export async function fetchChartImage(record) {
   );
   const selector = cheerio.load(pageHtml);
   const imageLink = selector('div.content_wrap_laso > img')[0].attribs.src;
-  return _.trim(imageLink);
+  const imageUrl = new URL(imageLink);
+  return imageUrl.origin + imageUrl.pathname;
 }

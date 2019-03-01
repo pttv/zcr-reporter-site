@@ -41,7 +41,7 @@ async function handleInputFiles() {
 
     const records = await parseCsvReports();
     const [record] = records;
-    const report = await ZCR.renderChartReading({ ...getInjectedValues(), ...record });
+    const report = await ZCR.renderChartReading({ ...ZCR.INJECTED_VALUES, ...record });
 
     toggleLoading(false);
     downloadReport(report, record.id);
@@ -59,7 +59,7 @@ async function loadFixtures() {
     
     const response = await fetch('/static/fixtures.json');
     const record = await response.json();
-    const report = await ZCR.renderChartReading({ ...getInjectedValues(), ...record });
+    const report = await ZCR.renderChartReading({ ...ZCR.INJECTED_VALUES, ...record });
     
     toggleLoading(false);
     $('#report-wrapper').html(report);
@@ -68,15 +68,6 @@ async function loadFixtures() {
     console.debug(error);
     alert(error.message);
   }
-}
-
-function getInjectedValues() {
-  const metas = $('head meta');
-  const links = $('head link:not([rel=stylesheet])');
-  return {
-    ...ZCR.INJECTED_VALUES,
-    headTags: _.map([...metas, ...links], 'outerHTML').join('\n'),
-  };
 }
 
 // $(document).ready(() => {

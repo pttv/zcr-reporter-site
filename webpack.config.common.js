@@ -89,14 +89,19 @@ module.exports = {
       {
         from: './src/static/',
         to: './static/',
-        ignore: ['*.png', '*.jpg', '*.ttf'],
+        ignore: ['*.png', '*.jpg', '*.ttf', '*fixtures*'],
       },
       {
         from: './src/scripts/index.js',
         to: './scripts.js',
       },
     ]),
-    new FaviconsPlugin('./src/static/images/favicon.png'),
+    new FaviconsPlugin({
+      background: '#000',
+      logo: './src/static/images/favicon.png',
+      prefix: 'static/favicons/',
+      title: 'Phong Thuỷ Tài Vận',
+    }),
     ...generateHTMLPlugins(),
   ],
   stats: {

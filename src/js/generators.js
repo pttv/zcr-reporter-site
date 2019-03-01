@@ -9,6 +9,7 @@ export function registerPartials() {
   Handlebars.registerPartial('footer', Handlebars.templates.footer);
   Handlebars.registerPartial('generalReadings', Handlebars.templates.general_readings);
   Handlebars.registerPartial('header', Handlebars.templates.header);
+  Handlebars.registerPartial('htmlHead', Handlebars.templates.html_head);
   Handlebars.registerPartial('opportunities', Handlebars.templates.opportunities);
   Handlebars.registerPartial('questions', Handlebars.templates.questions);
 }
