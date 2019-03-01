@@ -39,8 +39,8 @@ async function handleInputFiles() {
     const report = Handlebars.templates.report({ ...record, currentYear, chartImage });
 
     $('.loading-ring').addClass('hidden');
-    $('body').html(report);
-    // $('#report-wrapper').html(report);
+    // $('body').html(report);
+    $('#report-wrapper').html(report);
   } catch (error) {
     console.debug(error);
     alert(error.message);
