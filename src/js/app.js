@@ -1,4 +1,5 @@
-import { fetchChartImage } from './fetchers';
 import { parseCsv } from './parsers';
+import { renderChartReading, registerPartials } from './generators';
 
-window.ZCR = { fetchChartImage, parseCsv };
+registerPartials();
+window.ZCR = { parseCsv, renderChartReading };

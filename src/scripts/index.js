@@ -1,13 +1,3 @@
-function registerPartials() {
-  Handlebars.registerPartial('chartImage', Handlebars.templates.chart_image);
-  Handlebars.registerPartial('clientInfo', Handlebars.templates.client_info);
-  Handlebars.registerPartial('footer', Handlebars.templates.footer);
-  Handlebars.registerPartial('generalReadings', Handlebars.templates.general_readings);
-  Handlebars.registerPartial('header', Handlebars.templates.header);
-  Handlebars.registerPartial('opportunities', Handlebars.templates.opportunities);
-  Handlebars.registerPartial('questions', Handlebars.templates.questions);
-}
-
 function parseCsvReports() {
   return new Promise((resolve, reject) => {
     const inputFile = $('#reports-input')[0].files[0];
@@ -37,18 +27,12 @@ function toggleLoading(loading) {
   $('#report-container').empty();
 }
 
-async function renderChartReading(record) {
-  const currentYear = new Date().getFullYear();
-  const chartImage = await ZCR.fetchChartImage(record);
-  return Handlebars.templates.report({ ...record, currentYear, chartImage });
-}
-
 async function handleInputFiles() {
   try {
     toggleLoading(true);
 
     const records = await parseCsvReports();
-    const report = await renderChartReading(records[0]);
+    const report = await ZCR.renderChartReading(records[0]);
 
     toggleLoading(false);
     $('#report-wrapper').html(report);
@@ -64,7 +48,7 @@ async function loadFixtures() {
     toggleLoading(true);
     const response = await fetch('/static/fixtures.json');
     const record = await response.json();
-    const report = await renderChartReading(record);
+    const report = await ZCR.renderChartReading(record);
     
     toggleLoading(false);
     $('#report-wrapper').html(report);
@@ -76,6 +60,5 @@ async function loadFixtures() {
 }
 
 $(document).ready(() => {
-  registerPartials();
   // loadFixtures();
 });

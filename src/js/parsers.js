@@ -2,7 +2,7 @@ import _ from 'lodash';
 import $ from 'lodash/fp';
 import csv from 'csv';
 
-const meaningsMetadata = require('./meanings.json');
+const meaningsMetadata = require('./configs/meanings.json');
 
 const generalSectionOrders = ['I', 'II', 'III', 'IV'];
 
