@@ -60,5 +60,5 @@ async function loadFixtures() {
 }
 
 $(document).ready(() => {
-  // loadFixtures();
+  loadFixtures();
 });

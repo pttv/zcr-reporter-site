@@ -6,6 +6,7 @@ const meaningsMetadata = require('./configs/meanings.json');
 
 const generalSectionOrders = ['I', 'II', 'III', 'IV'];
 
+
 const parseTextBlock = $.flow(
   $.split(/\n+/gi),
   $.map(_.trim),

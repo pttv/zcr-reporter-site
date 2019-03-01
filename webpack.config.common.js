@@ -23,9 +23,12 @@ module.exports = {
   node: {
     fs: 'empty',
   },
-  entry: ['./src/js/app.js', './src/style/main.scss'],
+  entry: {
+    main: ['./src/js/app.js', './src/style/main.scss'],
+    report: ['./src/style/report.scss'],
+  },
   output: {
-    filename: 'app.bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   optimization: {

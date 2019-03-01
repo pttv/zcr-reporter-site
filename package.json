@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
-    "build:templates": "handlebars src/templates -f src/js/templates.handlebars --min --extension html -c handlebars/runtime",
-    "build:templates:dev": "handlebars src/templates -f src/js/templates.handlebars --extension html -c handlebars/runtime",
+    "build:templates": "handlebars src/templates -f src/js/configs/report.js --min --extension html -c handlebars/runtime",
+    "build:templates:dev": "handlebars src/templates -f src/js/configs/report.js --extension html -c handlebars/runtime",
     "lint:html": "pa11y-ci ./src/**/*.html",
     "lint:js": "./node_modules/.bin/eslint src/js/**/*.js",
     "lint:styles": "stylelint \"src/**/*.scss\"",
