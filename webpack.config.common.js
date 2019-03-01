@@ -4,6 +4,7 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FaviconsPlugin = require('favicons-webpack-plugin');
 
 function getNameFromDir(dir) {
   const lastSlash = dir.lastIndexOf('/');
@@ -95,6 +96,7 @@ module.exports = {
         to: './scripts.js',
       },
     ]),
+    new FaviconsPlugin('./src/static/images/favicon.png'),
     ...generateHTMLPlugins(),
   ],
   stats: {

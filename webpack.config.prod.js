@@ -18,7 +18,8 @@ module.exports = merge(common, {
       canPrint: true,
     }),
     new webpack.EnvironmentPlugin({
-      PUBLIC_PATH: 'https://phongthuytaivan.vn',
+      // PUBLIC_PATH: 'https://phongthuytaivan.vn',
+      PUBLIC_PATH: 'http://localhost:9000',
     }),
   ],
 });

@@ -2,7 +2,7 @@ import _ from 'lodash';
 import $ from 'lodash/fp';
 import csv from 'csv';
 
-import { GENERAL_SECTION_ORDERS, INJECTED_VALUES } from './constants';
+import { GENERAL_SECTION_ORDERS } from './constants';
 
 const meaningsMetadata = require('./configs/meanings.json');
 
@@ -65,7 +65,6 @@ function parseSingleRow(row) {
   const questions = parseQuestions(rawQuestions);
 
   return {
-    ...INJECTED_VALUES,
     birthDay,
     birthHour,
     birthMonth,
