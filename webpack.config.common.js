@@ -69,7 +69,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               fallback: 'file-loader',
-              limit: 2 ** 17,
+              limit: 2 ** 13,
             },
           },
         ],

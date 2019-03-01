@@ -9,12 +9,12 @@ export function registerPartials() {
   Handlebars.registerPartial('footer', Handlebars.templates.footer);
   Handlebars.registerPartial('generalReadings', Handlebars.templates.general_readings);
   Handlebars.registerPartial('header', Handlebars.templates.header);
+  Handlebars.registerPartial('htmlHead', Handlebars.templates.html_head);
   Handlebars.registerPartial('opportunities', Handlebars.templates.opportunities);
   Handlebars.registerPartial('questions', Handlebars.templates.questions);
 }
 
 export async function renderChartReading(record) {
-  const currentYear = new Date().getFullYear();
   const chartImage = await fetchChartImage(record);
-  return Handlebars.templates.report({ ...record, currentYear, chartImage });
+  return Handlebars.templates.report({ ...record, chartImage });
 }

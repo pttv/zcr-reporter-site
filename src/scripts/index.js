@@ -1,3 +1,8 @@
+const ENV = {
+  currentYear: new Date().getFullYear(),
+  publicPath: 'http://localhost:9000',
+};
+
 function parseCsvReports() {
   return new Promise((resolve, reject) => {
     const inputFile = $('#reports-input')[0].files[0];
@@ -27,14 +32,26 @@ function toggleLoading(loading) {
   $('#report-container').empty();
 }
 
+function downloadReport(report, id) {
+  const reportBlob = new Blob([report], { type: "text/html;charset=utf-8" });
+  const anchor = document.createElement('a', { id: 'report-download' });
+  anchor.href = URL.createObjectURL(reportBlob);
+  anchor.download = `${id}.html`;
+  anchor.click();
+}
+
 async function handleInputFiles() {
   try {
     toggleLoading(true);
 
     const records = await parseCsvReports();
-    const report = await ZCR.renderChartReading(records[0]);
+    const [record] = records;
+    const report = await ZCR.renderChartReading({ ...ENV, ...record });
+
+    Object.assign(window, { record, report });
 
     toggleLoading(false);
+    downloadReport(report, record.id);
     $('#report-wrapper').html(report);
   } catch (error) {
     toggleLoading(false);
@@ -48,9 +65,10 @@ async function loadFixtures() {
     toggleLoading(true);
     const response = await fetch('/static/fixtures.json');
     const record = await response.json();
-    const report = await ZCR.renderChartReading(record);
+    const report = await ZCR.renderChartReading({ ...ENV, ...record });
     
     toggleLoading(false);
+    downloadReport(report, record.id);
     $('#report-wrapper').html(report);
   } catch (error) {
     toggleLoading(false);

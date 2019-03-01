@@ -9,17 +9,24 @@
   src: url("../static/fonts/Myriad-Pro-Bold.ttf");
 }
 
-$bigPadding: 125px;
+$bigPadding: 100px;
 $fontSize: 18pt;
-$normalPadding: 75px;
-$smallPadding: 30px;
-$tinyPadding: 15px;
+$normalPadding: 50px;
+$smallPadding: 25px;
+$tinyPadding: 12px;
+
+body {
+  margin: 0;
+}
 
 .report {
   display: flex;
   flex-direction: column;
+  font-family: "Myriad Pro", Arial, sans-serif;
+  margin: auto;
   max-width: 800px;
-  min-width: 300px;
+  min-width: 500px;
+  text-align: center;
   width: 100%;
 }
 
@@ -28,7 +35,7 @@ $tinyPadding: 15px;
   color: #d7b777;
   display: flex;
   justify-content: space-between;
-  padding: 2 * $smallPadding $normalPadding;
+  padding: $normalPadding;
 
   .title {
     font-size: $fontSize;
@@ -84,8 +91,7 @@ $tinyPadding: 15px;
 }
 
 .chart img {
-  min-width: 200px;
-  width: 75%;
+  width: 80%;
 }
 
 .section-title {
@@ -99,13 +105,14 @@ $tinyPadding: 15px;
 }
 
 .report .header {
-  background: url("../static/images/bg-header.jpg") no-repeat;
+  background: url("../static/images/bg-header.jpg") no-repeat bottom right;
+  background-position-y: -15px;
 
   .logo {
     background: url('../static/images/logo.png') no-repeat center;
     background-size: cover;
-    height: $normalPadding;
-    width: $normalPadding;
+    height: 75px;
+    width: 75px;
   }
 
   .title {
@@ -121,7 +128,7 @@ $tinyPadding: 15px;
 }
 
 .report .footer {
-  background: url("../static/images/bg-footer.jpg") no-repeat;
+  background: url("../static/images/bg-footer.jpg") no-repeat top center;
   background-size: cover;
   justify-content: flex-end;
   margin-top: $tinyPadding;

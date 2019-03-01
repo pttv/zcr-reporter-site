@@ -1,18 +1,17 @@
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="report.css" />
-    <title>{{ id }}</title>
-  </head>
+  {{> htmlHead}}
   <body>
-    <div class="report">
-      {{> header}}
-      {{> clientInfo}}
-      {{> chartImage}}
-      {{> generalReadings}}
-      {{> opportunities}}
-      {{> questions}}
-      <span class="eof">※※※</span>
-      {{> footer}}
+    <div>
+      <div class="report">
+        {{> header}}
+        {{> clientInfo}}
+        {{> chartImage}}
+        {{> generalReadings}}
+        {{> opportunities}}
+        {{> questions}}
+        <span class="eof">※※※</span>
+        {{> footer}}
+      </div>
     </div>
   </body>
 </html>

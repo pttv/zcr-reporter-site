@@ -54,6 +54,15 @@ templates['general_readings'] = template({"1":function(container,depth0,helpers,
 templates['header'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"header wooden\">\n  <div class=\"logo\"></div>\n  <strong class=\"title\">Luận giải lá số Tử vi</strong>\n</div>";
 },"useData":true});
+templates['html_head'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"stylesheet\" type=\"text/css\" href=\""
+    + alias4(((helper = (helper = helpers.publicPath || (depth0 != null ? depth0.publicPath : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"publicPath","hash":{},"data":data}) : helper)))
+    + "/report.css\" />\n  <title>"
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "</title>\n</head>";
+},"useData":true});
 templates['opportunities'] = template({"1":function(container,depth0,helpers,partials,data) {
     return "      <p>"
     + container.escapeExpression(container.lambda(depth0, depth0))
@@ -89,18 +98,18 @@ templates['questions'] = template({"1":function(container,depth0,helpers,partial
   return ((stack1 = helpers["if"].call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.questions : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"useData":true});
 templates['report'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper;
+    var stack1;
 
-  return "<html>\n  <head>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"report.css\" />\n    <title>"
-    + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"id","hash":{},"data":data}) : helper)))
-    + "</title>\n  </head>\n  <body>\n    <div class=\"report\">\n"
-    + ((stack1 = container.invokePartial(partials.header,depth0,{"name":"header","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + ((stack1 = container.invokePartial(partials.clientInfo,depth0,{"name":"clientInfo","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + ((stack1 = container.invokePartial(partials.chartImage,depth0,{"name":"chartImage","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + ((stack1 = container.invokePartial(partials.generalReadings,depth0,{"name":"generalReadings","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + ((stack1 = container.invokePartial(partials.opportunities,depth0,{"name":"opportunities","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + ((stack1 = container.invokePartial(partials.questions,depth0,{"name":"questions","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "      <span class=\"eof\">※※※</span>\n"
-    + ((stack1 = container.invokePartial(partials.footer,depth0,{"name":"footer","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
-    + "    </div>\n  </body>\n</html>";
+  return "<html>\n"
+    + ((stack1 = container.invokePartial(partials.htmlHead,depth0,{"name":"htmlHead","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "  <body>\n    <div>\n      <div class=\"report\">\n"
+    + ((stack1 = container.invokePartial(partials.header,depth0,{"name":"header","data":data,"indent":"        ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + ((stack1 = container.invokePartial(partials.clientInfo,depth0,{"name":"clientInfo","data":data,"indent":"        ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + ((stack1 = container.invokePartial(partials.chartImage,depth0,{"name":"chartImage","data":data,"indent":"        ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + ((stack1 = container.invokePartial(partials.generalReadings,depth0,{"name":"generalReadings","data":data,"indent":"        ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + ((stack1 = container.invokePartial(partials.opportunities,depth0,{"name":"opportunities","data":data,"indent":"        ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + ((stack1 = container.invokePartial(partials.questions,depth0,{"name":"questions","data":data,"indent":"        ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "        <span class=\"eof\">※※※</span>\n"
+    + ((stack1 = container.invokePartial(partials.footer,depth0,{"name":"footer","data":data,"indent":"        ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+    + "      </div>\n    </div>\n  </body>\n</html>";
 },"usePartial":true,"useData":true});

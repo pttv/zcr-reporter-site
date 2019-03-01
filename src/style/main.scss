@@ -1,20 +1,13 @@
 body {
-  font-family: "Myriad Pro", "Helvetica Neue", sans-serif;
-  margin: auto;
-  text-align: center;
-}
-
-.file-input {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  font-family: "Myriad Pro", Arial, sans-serif;
 }
 
 #report-wrapper {
-  padding-top: 5px;
+  padding-top: 30px;
 }
 
 .loading-ring {
+  display: inline-block;
   height: 32px;
   position: relative;
   width: 32px;
