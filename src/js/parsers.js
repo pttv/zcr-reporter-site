@@ -2,10 +2,9 @@ import _ from 'lodash';
 import $ from 'lodash/fp';
 import csv from 'csv';
 
+import { GENERAL_SECTION_ORDERS, INJECTED_VALUES } from './constants';
+
 const meaningsMetadata = require('./configs/meanings.json');
-
-const generalSectionOrders = ['I', 'II', 'III', 'IV'];
-
 
 const parseTextBlock = $.flow(
   $.split(/\n+/gi),
@@ -17,7 +16,7 @@ const parseTextBlock = $.flow(
 
 function parseGeneralReadings(rawReadings, index, key) {
   const { meanings, title } = meaningsMetadata[key];
-  const order = generalSectionOrders[index];
+  const order = GENERAL_SECTION_ORDERS[index];
   const readings = parseTextBlock(rawReadings);
   return { meanings, readings, title: `${order}. ${title}` };
 }
@@ -37,50 +36,48 @@ function parseQuestions(questions) {
   }));
 }
 
-function parseRecordRows(records) {
-  return _.map(records, rec => {
-    const [
-      id,
-      fullName,
-      contactDetail,
-      gender,
-      birthHour,
-      birthDay,
-      birthMonth,
-      birthYear,
-      menhTaiQuan,
-      phucDiThe,
-      phuTuNo,
-      dienTatHuynh,
-      rawOpportunities,
-      ...rawQuestions
-    ] = rec;
+function parseSingleRow(row) {
+  const [
+    id,
+    fullName,
+    contactDetail,
+    gender,
+    birthHour,
+    birthDay,
+    birthMonth,
+    birthYear,
+    menhTaiQuan,
+    phucDiThe,
+    phuTuNo,
+    dienTatHuynh,
+    rawOpportunities,
+    ...rawQuestions
+  ] = row;
 
-    const generalReadings = [
-      parseGeneralReadings(menhTaiQuan, 0, 'menh_tai_quan'),
-      parseGeneralReadings(phucDiThe, 1, 'phuc_di_the'),
-      parseGeneralReadings(phuTuNo, 2, 'phu_tu_no'),
-      parseGeneralReadings(dienTatHuynh, 3, 'dien_tat_huynh'),
-    ];
+  const generalReadings = [
+    parseGeneralReadings(menhTaiQuan, 0, 'menh_tai_quan'),
+    parseGeneralReadings(phucDiThe, 1, 'phuc_di_the'),
+    parseGeneralReadings(phuTuNo, 2, 'phu_tu_no'),
+    parseGeneralReadings(dienTatHuynh, 3, 'dien_tat_huynh'),
+  ];
 
-    const opportunities = parseTextBlock(rawOpportunities);
+  const opportunities = parseTextBlock(rawOpportunities);
+  const questions = parseQuestions(rawQuestions);
 
-    const questions = parseQuestions(rawQuestions);
-
-    return {
-      birthDay,
-      birthHour,
-      birthMonth,
-      birthYear,
-      contactDetail,
-      fullName,
-      gender,
-      generalReadings,
-      id,
-      opportunities,
-      questions,
-    };
-  });
+  return {
+    ...INJECTED_VALUES,
+    birthDay,
+    birthHour,
+    birthMonth,
+    birthYear,
+    contactDetail,
+    fullName,
+    gender,
+    generalReadings,
+    id,
+    opportunities,
+    questions,
+  };
 }
 
 /* eslint-disable import/prefer-default-export */
@@ -96,8 +93,9 @@ export function parseCsv(csvData) {
       }
 
       // Filter records with valid ID
-      const records = _.filter(rawRecords, ([id]) => _.startsWith(id, 'OLN'));
-      resolve(parseRecordRows(records));
+      const recordRows = _.filter(rawRecords, ([id]) => _.startsWith(id, 'OLN'));
+      const records = _.map(recordRows, parseSingleRow);
+      resolve(records);
     });
   });
 }

@@ -1,5 +1,6 @@
 const cssnano = require('cssnano');
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -15,6 +16,9 @@ module.exports = merge(common, {
       cssProcessor: cssnano,
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true,
+    }),
+    new webpack.EnvironmentPlugin({
+      PUBLIC_PATH: 'https://phongthuytaivan.vn',
     }),
   ],
 });

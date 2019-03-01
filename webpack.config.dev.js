@@ -1,5 +1,5 @@
 const merge = require('webpack-merge');
-
+const webpack = require('webpack');
 const common = require('./webpack.config.common.js');
 
 module.exports = merge(common, {
@@ -13,4 +13,9 @@ module.exports = merge(common, {
     open: true,
     port: 9000,
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      PUBLIC_PATH: 'http://localhost:9000',
+    }),
+  ],
 });
