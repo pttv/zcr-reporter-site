@@ -71,6 +71,7 @@ module.exports = {
             options: {
               fallback: 'file-loader',
               limit: 2 ** 13,
+              name: '[name].[ext]',
               outputPath: 'static',
             },
           },

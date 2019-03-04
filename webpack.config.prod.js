@@ -18,8 +18,7 @@ module.exports = merge(common, {
       canPrint: true,
     }),
     new webpack.EnvironmentPlugin({
-      // PUBLIC_PATH: 'https://phongthuytaivan.vn',
-      PUBLIC_PATH: 'http://localhost:9000',
+      PUBLIC_PATH: 'http://ethan605.s3-website-ap-southeast-1.amazonaws.com',
     }),
   ],
 });
