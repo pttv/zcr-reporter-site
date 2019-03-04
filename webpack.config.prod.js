@@ -18,7 +18,7 @@ module.exports = merge(common, {
       canPrint: true,
     }),
     new webpack.EnvironmentPlugin({
-      PUBLIC_PATH: 'http://tuvi.phongthuytaivan.vn',
+      PUBLIC_PATH: 'https://tuvi.phongthuytaivan.vn',
     }),
   ],
 });
