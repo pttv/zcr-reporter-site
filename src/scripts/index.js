@@ -20,6 +20,7 @@ function parseCsvReports() {
 function toggleLoading(loading) {
   if (!loading) {
     $('.loading-ring').addClass('hidden');
+    $('#reports-input')[0].value = null;
     return;
   }
 
