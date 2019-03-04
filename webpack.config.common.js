@@ -15,6 +15,9 @@ function generateHTMLPlugins() {
   return glob.sync('./src/*.html').map(
     dir => new HtmlPlugin({
       filename: getNameFromDir(dir), // Output
+      meta: {
+        version: `1.0.0-${Math.floor(Date.now() / 1000)}`,
+      },
       template: dir, // Input
     }),
   );
