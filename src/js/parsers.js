@@ -44,8 +44,8 @@ function parseSingleRow(row) {
     contactDetail,
     gender,
     birthHour,
-    birthDay,
-    birthMonth,
+    rawBirthDay,
+    rawBirthMonth,
     birthYear,
     menhTaiQuan,
     phucDiThe,
@@ -54,6 +54,9 @@ function parseSingleRow(row) {
     rawOpportunities,
     ...rawQuestions
   ] = row;
+
+  const birthDay = _.padStart(rawBirthDay, 2, '0');
+  const birthMonth = _.padStart(rawBirthMonth, 2, '0');
 
   const checksum = shajs('sha1')
     .update([id, gender, birthHour, birthDay, birthMonth, birthYear].join('_'))
