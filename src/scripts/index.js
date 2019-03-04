@@ -27,11 +27,12 @@ function toggleLoading(loading) {
   $('#report-container').empty();
 }
 
-function downloadReport(report, id) {
+function downloadReport(report, record) {
+  const { checksum, id } = record;
   const reportBlob = new Blob([report], { type: "text/html;charset=utf-8" });
   const anchor = document.createElement('a', { id: 'report-download' });
   anchor.href = URL.createObjectURL(reportBlob);
-  anchor.download = `${id}.html`;
+  anchor.download = `${id}_${checksum.substring(checksum.length - 6)}.html`;
   anchor.click();
 }
 
@@ -44,9 +45,8 @@ async function handleInputFiles() {
     const report = await ZCR.renderChartReading({ ...ZCR.INJECTED_VALUES, ...record });
 
     toggleLoading(false);
-    downloadReport(report, record.id);
-    $('body').html(report);
-    // $('#report-wrapper').html(report);
+    downloadReport(report, record);
+    $('#report-wrapper').html(report);
   } catch (error) {
     toggleLoading(false);
     console.debug(error);

@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import $ from 'lodash/fp';
 import csv from 'csv';
+import shajs from 'sha.js';
 
 import { GENERAL_SECTION_ORDERS } from './constants';
 
@@ -54,6 +55,10 @@ function parseSingleRow(row) {
     ...rawQuestions
   ] = row;
 
+  const checksum = shajs('sha1')
+    .update([id, gender, birthHour, birthDay, birthMonth, birthYear].join('_'))
+    .digest('hex');
+
   const generalReadings = [
     parseGeneralReadings(menhTaiQuan, 0, 'menh_tai_quan'),
     parseGeneralReadings(phucDiThe, 1, 'phuc_di_the'),
@@ -69,6 +74,7 @@ function parseSingleRow(row) {
     birthHour,
     birthMonth,
     birthYear,
+    checksum,
     contactDetail,
     fullName,
     gender,
