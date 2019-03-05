@@ -14,6 +14,7 @@
     "prebuild": "yarn build:templates",
     "start": "webpack --config webpack.config.prod.js && http-server ./dist -o",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js",
+    "sync-s3": "aws s3 sync ./dist s3://tuvi.phongthuytaivan.vn",
     "watch:templates": "watch 'yarn build:templates' src/templates"
   },
   "devDependencies": {
