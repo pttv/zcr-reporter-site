@@ -3,6 +3,11 @@ import { fetchChartImage } from './fetchers';
 
 import './configs/report.handlebars';
 
+const INJECTED_VALUES = {
+  currentYear: new Date().getFullYear(),
+  publicPath: process.env.PUBLIC_PATH,
+};
+
 export function registerPartials() {
   Handlebars.registerPartial('chartImage', Handlebars.templates.chart_image);
   Handlebars.registerPartial('clientInfo', Handlebars.templates.client_info);
@@ -16,5 +21,5 @@ export function registerPartials() {
 
 export async function renderChartReading(record) {
   const chartImage = await fetchChartImage(record);
-  return Handlebars.templates.report({ ...record, chartImage });
+  return Handlebars.templates.report({ ...INJECTED_VALUES, ...record, chartImage });
 }

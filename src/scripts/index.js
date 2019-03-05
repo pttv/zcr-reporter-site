@@ -43,7 +43,7 @@ async function handleInputFiles() {
 
     const records = await parseCsvReports();
     const [record] = records;
-    const report = await ZCR.renderChartReading({ ...ZCR.INJECTED_VALUES, ...record });
+    const report = await ZCR.renderChartReading(record);
 
     toggleLoading(false);
     downloadReport(report, record);
@@ -55,23 +55,5 @@ async function handleInputFiles() {
   }
 }
 
-async function loadFixtures() {
-  try {
-    toggleLoading(true);
-    
-    const response = await fetch('/static/fixtures.json');
-    const record = await response.json();
-    const report = await ZCR.renderChartReading({ ...ZCR.INJECTED_VALUES, ...record });
-    
-    toggleLoading(false);
-    $('#report-wrapper').html(report);
-  } catch (error) {
-    toggleLoading(false);
-    console.debug(error);
-    alert(error.message);
-  }
-}
-
 // $(document).ready(() => {
-//   loadFixtures();
 // });

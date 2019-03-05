@@ -1,10 +1,7 @@
+export const BASE64_IMAGE_PREFIX = 'data:image/png;base64,';
+
 export const CHART_GENERATOR_URL = 'https://tuvivietnam.vn/index.php?anlaso/laso';
 export const CORS_ANYWHERE_URL = 'https://cors-anywhere.herokuapp.com/';
-
-export const INJECTED_VALUES = {
-  currentYear: new Date().getFullYear(),
-  publicPath: process.env.PUBLIC_PATH,
-};
 
 export const GENERAL_SECTION_ORDERS = ['I', 'II', 'III', 'IV'];
 
